@@ -29,6 +29,7 @@ def precompute_hashes(T, P, p, x):
         y = (y * x) % p
     for i in reversed(range(len(T) - len(P))):
         pre_hash = (x * H[i + 1] + ord(T[i]) - y * ord(T[i + len(P)]))
+        #important to avoid too much collisions 
         while(pre_hash < 0):
             pre_hash += p
         H[i] = pre_hash % p
